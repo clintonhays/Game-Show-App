@@ -10,8 +10,8 @@ class Game {
   }
 
   startGame () {
-    getRandomPhrase(this.phrases);
-    addPhraseToDisplay(this.phrase);
+    this.phrase = this.getRandomPhrase();
+    // addPhraseToDisplay(this.phrase);
   }
 
   createPhrases () {
@@ -43,18 +43,11 @@ class Game {
     const randNum = Math.floor(Math.random() * this.phrases.length);
     const randPhrase = this.phrases[randNum];
 
-    this.phrase = randPhrase;
+    console.log(randPhrase);
+    return randPhrase;
   }
 
-  handleInteraction () {
-    const keyboard = document.getElementById('qwerty');
-
-    // keyboard.addEventListener('click', (e) {
-    //   const target = e.target;
-
-    //   if(target.)
-    // })
-  }
+  handleInteraction () {}
 
   removeLife () {}
 

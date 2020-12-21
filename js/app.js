@@ -6,3 +6,4 @@
 const game = new Game();
 
 console.log(game.startGame());
+console.log(game.phrase);
