@@ -20,6 +20,21 @@ class Phrase {
     });
     document.getElementById('phrase').firstElementChild.innerHTML = html;
   }
+
+  checkLetter (letter) {
+    return this.phrase.includes(letter);
+  }
+
+  showMatchedLetter (letter) {
+    if (this.checkLetter(letter)) {
+      const matches = document.getElementsByClassName(`hide letter ${letter}`);
+
+      matches.forEach((match) => {
+        match.classList.remove('hide');
+        match.classList.add('show');
+      });
+    }
+  }
 }
 
 /**
