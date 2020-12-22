@@ -9,11 +9,6 @@ class Game {
     this.phrase = null;
   }
 
-  startGame () {
-    this.phrase = this.getRandomPhrase();
-    // addPhraseToDisplay(this.phrase);
-  }
-
   createPhrases () {
     const phraseArray = [
       'im mr meseeks look at me',
@@ -32,7 +27,8 @@ class Game {
 
     for (let i = 0; i < 5; i++) {
       const randNum = Math.floor(Math.random() * phraseArray.length);
-      phrases.push(phraseArray[randNum]);
+      const phrase = new Phrase(phraseArray[randNum]);
+      phrases.push(phrase);
       phraseArray.splice(randNum, 1);
     }
 
@@ -43,15 +39,6 @@ class Game {
     const randNum = Math.floor(Math.random() * this.phrases.length);
     const randPhrase = this.phrases[randNum];
 
-    console.log(randPhrase);
     return randPhrase;
   }
-
-  handleInteraction () {}
-
-  removeLife () {}
-
-  checkForWin () {}
-
-  gameOver () {}
 }
