@@ -6,7 +6,7 @@ class Game {
   constructor () {
     this.missed = 0;
     this.phrases = this.createPhrases();
-    this.phrase = null;
+    this.activePhrase = null;
   }
 
   createPhrases () {
@@ -41,4 +41,6 @@ class Game {
 
     return randPhrase;
   }
+
+  startGame () {}
 }
