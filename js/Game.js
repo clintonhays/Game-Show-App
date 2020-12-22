@@ -42,5 +42,9 @@ class Game {
     return randPhrase;
   }
 
-  startGame () {}
+  startGame () {
+    const phrase = this.getRandomPhrase();
+    this.activePhrase = phrase.addPhraseToDisplay();
+    document.getElementById('overlay').style.display = 'none';
+  }
 }
