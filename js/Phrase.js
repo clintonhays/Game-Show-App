@@ -30,8 +30,7 @@ class Phrase {
       const matches = document.getElementsByClassName(`hide letter ${letter}`);
 
       matches.forEach((match) => {
-        match.classList.remove('hide');
-        match.classList.add('show');
+        match.classList.replace('hide', 'show');
       });
     }
   }

@@ -47,4 +47,21 @@ class Game {
     this.activePhrase = phrase.addPhraseToDisplay();
     document.getElementById('overlay').style.display = 'none';
   }
+
+  checkForWin () {
+    const li = document.getElementById('phrase').firstElementChild.children;
+    let gameWon;
+
+    const remaining = li.filter((item) => item.classList.contains('hidden'));
+    if ((remaining.length = 0)) {
+      gameWon = true;
+    }
+
+    return gameWon;
+  }
+
+  removeLife () {
+    const liveHeart = document.querySelector('img[src="images/liveHeart.png"]');
+    liveHeart.src = 'images/lostHeart.png';
+  }
 }
