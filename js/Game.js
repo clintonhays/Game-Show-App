@@ -47,6 +47,14 @@ class Game {
     const phrase = this.getRandomPhrase();
     phrase.addPhraseToDisplay();
     document.getElementById('overlay').style.display = 'none';
+
+    const keys = Array.from(document.getElementsByClassName('key'));
+    const lostHeart = Array.from(document.querySelectorAll('img[src="images/lostHeart.png"]'));
+    keys.forEach((key) => {
+      key.classList.remove('chosen', 'wrong');
+      key.disabled = false;
+    });
+    lostHeart.forEach((heart) => (heart.src = 'images/liveHeart.png'));
   }
 
   checkForWin () {
@@ -73,16 +81,21 @@ class Game {
   gameOver (gameWon) {
     const overlay = document.getElementById('overlay');
     const gameOverMessage = document.getElementById('game-over-message');
+
     if (gameWon) {
       overlay.style.display = 'flex';
-      overlay.classList.replace('start', 'win');
+      overlay.classList.remove('start');
+      overlay.className = 'win';
       gameOverMessage.innerText =
         'By the power vested in me by the Council of Ricks, I hereby proclaim you winner...or whatever. Good job.';
-    } else if (!gameWon) {
+    } else if (gameWon === false) {
       overlay.style.display = 'flex';
-      overlay.classList.replace('start', 'lose');
+      overlay.classList.remove('start');
+      overlay.className = 'lose';
       gameOverMessage.innerText = 'Looks like you might be a Jerry. Better luck next time.';
     }
+
+    document.getElementById('phrase').firstElementChild.innerHTML = '';
   }
 
   handleInteraction (button) {
@@ -95,10 +108,9 @@ class Game {
     } else {
       button.classList.add('chosen');
       this.activePhrase.showMatchedLetter(letter);
-      this.checkForWin();
-    }
-    if (this.checkForWin() === true) {
-      this.gameOver(true);
+      if (this.checkForWin()) {
+        this.gameOver(true);
+      }
     }
   }
 }

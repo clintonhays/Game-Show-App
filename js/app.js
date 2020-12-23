@@ -12,5 +12,7 @@ document.getElementById('btn__reset').addEventListener('click', (e) => {
 document.getElementById('qwerty').addEventListener('click', (e) => {
   const target = e.target;
 
-  game.handleInteraction(target);
+  if (target.classList.contains('key')) {
+    game.handleInteraction(target);
+  }
 });
