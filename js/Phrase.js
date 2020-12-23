@@ -27,7 +27,7 @@ class Phrase {
 
   showMatchedLetter (letter) {
     if (this.checkLetter(letter)) {
-      const matches = document.getElementsByClassName(`hide letter ${letter}`);
+      const matches = Array.from(document.getElementsByClassName(`hide letter ${letter}`));
 
       matches.forEach((match) => {
         match.classList.replace('hide', 'show');

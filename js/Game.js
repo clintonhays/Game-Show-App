@@ -39,29 +39,49 @@ class Game {
     const randNum = Math.floor(Math.random() * this.phrases.length);
     const randPhrase = this.phrases[randNum];
 
+    this.activePhrase = randPhrase;
     return randPhrase;
   }
 
   startGame () {
     const phrase = this.getRandomPhrase();
-    this.activePhrase = phrase.addPhraseToDisplay();
+    phrase.addPhraseToDisplay();
     document.getElementById('overlay').style.display = 'none';
   }
 
   checkForWin () {
-    const li = document.getElementById('phrase').firstElementChild.children;
-    let gameWon;
+    const li = Array.from(document.querySelectorAll('li'));
 
-    const remaining = li.filter((item) => item.classList.contains('hidden'));
-    if ((remaining.length = 0)) {
-      gameWon = true;
+    const remaining = li.filter((item) => item.classList.contains('hide'));
+    if (remaining.length === 0) {
+      return true;
+    } else {
+      return false;
     }
-
-    return gameWon;
   }
 
   removeLife () {
     const liveHeart = document.querySelector('img[src="images/liveHeart.png"]');
     liveHeart.src = 'images/lostHeart.png';
+    this.missed += 1;
+
+    if (this.missed >= 5) {
+      this.gameOver(false);
+    }
+  }
+
+  gameOver (gameWon) {
+    const overlay = document.getElementById('overlay');
+    const gameOverMessage = document.getElementById('game-over-message');
+    if (gameWon) {
+      overlay.style.display = 'initial';
+      overlay.classList.replace('start', 'win');
+      gameOverMessage.innerText =
+        'By the power vested in me by the Council of Ricks, I hereby proclaim you winner...or whatever. Good job.';
+    } else if (!gameWon) {
+      overlay.style.display = 'initial';
+      overlay.classList.replace('start', 'lose');
+      gameOverMessage.innerText = 'Looks like you might be a Jerry. Better luck next time.';
+    }
   }
 }
