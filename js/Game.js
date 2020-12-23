@@ -74,12 +74,12 @@ class Game {
     const overlay = document.getElementById('overlay');
     const gameOverMessage = document.getElementById('game-over-message');
     if (gameWon) {
-      overlay.style.display = 'initial';
+      overlay.style.display = 'flex';
       overlay.classList.replace('start', 'win');
       gameOverMessage.innerText =
         'By the power vested in me by the Council of Ricks, I hereby proclaim you winner...or whatever. Good job.';
     } else if (!gameWon) {
-      overlay.style.display = 'initial';
+      overlay.style.display = 'flex';
       overlay.classList.replace('start', 'lose');
       gameOverMessage.innerText = 'Looks like you might be a Jerry. Better luck next time.';
     }
