@@ -84,4 +84,21 @@ class Game {
       gameOverMessage.innerText = 'Looks like you might be a Jerry. Better luck next time.';
     }
   }
+
+  handleInteraction (button) {
+    button.disabled = true;
+    const letter = button.textContent;
+
+    if (this.activePhrase.checkLetter(letter) === false) {
+      button.classList.add('wrong');
+      this.removeLife();
+    } else {
+      button.classList.add('chosen');
+      this.activePhrase.showMatchedLetter(letter);
+      this.checkForWin();
+    }
+    if (this.checkForWin() === true) {
+      this.gameOver(true);
+    }
+  }
 }
