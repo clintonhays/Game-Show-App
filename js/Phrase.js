@@ -2,10 +2,24 @@
  * Project 4 - OOP Game App
  * Phrase.js */
 
+/**
+ * @classdesc Phrase creates the innerHTML of the phrase display and changes
+ * class name for matched letters
+ * @constructor
+ * @param {string} phrase random string generated in Game.js 
+ */
+
 class Phrase {
   constructor (phrase) {
     this.phrase = phrase.toLowerCase();
   }
+
+  /**
+   * creates the innerHTML to be displayed in phrase UL by
+   * splitting the string to an array, looping over the items
+   * and creating an <li> for each letter
+   * then inserts the html into the DOM
+   */
 
   addPhraseToDisplay () {
     const stringArray = this.phrase.split('');
@@ -21,9 +35,19 @@ class Phrase {
     document.getElementById('phrase').firstElementChild.innerHTML = html;
   }
 
+  /**
+   * check if game.activePhrase contains chosen letter
+   * @param {string} letter letter chosen from onscreen keyboard
+   * @returns {bool} true if game.activePhrase contains letter or false
+   */
   checkLetter (letter) {
     return this.phrase.includes(letter);
   }
+
+  /**
+   * reveal letter in phrase display if checkLetter returns true
+   * @param {string} letter letter chosen from onscreen keyboard
+   */
 
   showMatchedLetter (letter) {
     if (this.checkLetter(letter)) {
@@ -35,12 +59,3 @@ class Phrase {
     }
   }
 }
-
-/**
- * Psuedo Code:
- * 
- * addPhraseToDisplay
- *  // create array from string
- *  // loop through array
- *    // check if character is ' ' or not and create html literal
- */

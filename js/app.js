@@ -16,3 +16,14 @@ document.getElementById('qwerty').addEventListener('click', (e) => {
     game.handleInteraction(target);
   }
 });
+
+addEventListener('keydown', (e) => {
+  const target = e.key;
+  const keyBoard = Array.from(document.getElementsByClassName('key'));
+
+  keyBoard.forEach((key) => {
+    if (key.textContent === target) {
+      game.handleInteraction(key);
+    }
+  });
+});
