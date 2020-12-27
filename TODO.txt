@@ -1,0 +1,5 @@
+Add dark mode styling
+
+Fix letter reveal animation
+
+Add phrase to lose screen
